@@ -98,9 +98,10 @@
             flex-grow: 1;
         }
 
+        /* --- AQUÍ ESTÁ EL CAMBIO PARA FORZAR LAS 2 COLUMNAS --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
@@ -190,6 +191,8 @@
 
         /* --- AJUSTES RESPONSIVOS (Celulares y Tablets) --- */
         @media (max-width: 768px) {
+            /* Vuelve a dejarlo en 1 columna en celulares */
+            .services-grid { grid-template-columns: 1fr; }
             header { padding: 3rem 1rem; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 1.4rem; }
