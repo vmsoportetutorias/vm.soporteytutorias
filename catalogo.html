@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de servicios y precios de VM Soporte & Tutorías Tech.">
+    <title>VM Soporte & Tutorías | Catálogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #02060d;
+            --text-color: #e0e0e0;
+            --neon-cyan: #00f3ff;
+            --card-bg: rgba(10, 25, 47, 0.4);
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(circle at top, #0a1930 0%, var(--bg-color) 80%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background-color: rgba(2, 6, 13, 0.8);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 1px dashed rgba(0, 243, 255, 0.3);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 3px;
+        }
+
+        h1 span {
+            color: var(--neon-cyan);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+
+        /* --- CATÁLOGO DE PRECIOS CON ANIMACIÓN --- */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, rgba(10, 25, 47, 0.6), rgba(2, 6, 13, 0.9));
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 15px 2px var(--neon-cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+        }
+
+        .price-card:hover::before {
+            opacity: 1;
+            animation: scanline 2s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        .price-card h4 {
+            font-family: 'Rajdhani', sans-serif;
+            color: white;
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            font-size: 2rem;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .price-desc {
+            font-size: 1rem;
+            color: #a0aabf;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn-agendar {
+            display: block;
+            background-color: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 10px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+
+        .price-card:hover .btn-agendar {
+            background-color: var(--neon-cyan);
+            color: var(--bg-color);
+            animation: pulse-btn 1.5s infinite;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1rem;
+            color: #666;
+            margin-top: auto;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .catalog-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .catalog-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html" class="active">Catálogo</a>
+        <a href="nosotros.html">Nosotros</a>
+    </nav>
+
+    <header>
+        <h1>Nuestros <span>Planes y Servicios</span></h1>
+    </header>
+
+    <div class="container">
+        <div class="catalog-grid">
+            <!-- Plan 1 -->
+            <div class="price-card">
+                <h4>Clases Particulares Online</h4>
+                <div class="price-amount">$12.000</div>
+                <p class="price-desc">Sesión 100% práctica vía videollamada (Ofimática & TI). Incluye material de apoyo.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20quiero%20agendar%20una%20Clase%20Particular%20Online" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+
+            <!-- Plan 2 -->
+            <div class="price-card">
+                <h4>Clases Presenciales</h4>
+                <div class="price-amount">$15.000</div>
+                <p class="price-desc">Asesoría cara a cara en tu propio equipo. Sujeto a disponibilidad de comuna.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20quiero%20consultar%20por%20Clases%20Presenciales" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="price-card">
+                <h4>Pack Nivelación (3 hrs)</h4>
+                <div class="price-amount">$33.000</div>
+                <p class="price-desc">Ideal para repaso completo o abordar un proyecto desde cero a intermedio. Modalidad online.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20me%20interesa%20el%20Pack%20de%20Nivelaci%C3%B3n" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+
+            <!-- Plan 4 -->
+            <div class="price-card">
+                <h4>Diagnóstico de Hardware</h4>
+                <div class="price-amount">$10.000</div>
+                <p class="price-desc">Revisión completa. El valor se descuenta del total si reparas el equipo con nosotros.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20necesito%20un%20diagn%C3%B3stico%20para%20mi%20equipo" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+
+            <!-- Plan 5 -->
+            <div class="price-card">
+                <h4>Limpieza & Mantenimiento</h4>
+                <div class="price-amount">$20.000</div>
+                <p class="price-desc">Limpieza de archivos, optimización del sistema y eliminación profunda de virus o malware.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20necesito%20mantenimiento%20para%20mi%20PC" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+
+            <!-- Plan 6 -->
+            <div class="price-card">
+                <h4>Formateo + Instalación SO</h4>
+                <div class="price-amount">$25.000</div>
+                <p class="price-desc">Instalación limpia de Windows, con drivers y suite Office básica lista para usar.</p>
+                <a href="https://wa.me/56952596475?text=Hola,%20necesito%20formatear%20mi%20computador" target="_blank" class="btn-agendar">Agendar Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VM Soporte & Tutorías Tech.</p>
+    </footer>
+
+</body>
+</html>
