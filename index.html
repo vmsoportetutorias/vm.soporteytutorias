@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="VM Soporte & Tutorías Tech. Impulsamos tu mundo digital.">
-    <title>VM Soporte & Tutorías | Tech</title>
-    <!-- Fuentes futuristas de Google -->
+    <title>VM Soporte & Tutorías | Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- Librería de Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,6 +14,7 @@
             --neon-cyan: #00f3ff;
             --neon-blue: #0088ff;
             --card-bg: rgba(10, 25, 47, 0.4);
+            --dark-blue: #0a192f;
         }
         
         body {
@@ -26,11 +25,42 @@
             padding: 0;
             min-height: 100vh;
             font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background-color: rgba(2, 6, 13, 0.8);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
         }
 
         header {
             text-align: center;
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             border-bottom: 1px solid rgba(0, 243, 255, 0.3);
             box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
         }
@@ -65,6 +95,7 @@
             padding: 2rem;
             position: relative;
             z-index: 10;
+            flex-grow: 1;
         }
 
         .services-grid {
@@ -154,10 +185,28 @@
             padding: 2rem;
             font-size: 1rem;
             color: #666;
+            margin-top: auto;
+        }
+
+        /* --- AJUSTES RESPONSIVOS (Celulares y Tablets) --- */
+        @media (max-width: 768px) {
+            header { padding: 3rem 1rem; }
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 1.4rem; }
+            .container { padding: 1rem; margin-top: -15px; }
+            .service-card { padding: 1.5rem; }
+            .cta-section { padding: 3rem 1rem; }
+            .cta-section h3 { font-size: 1.5rem !important; }
+            .btn { display: flex; justify-content: center; width: 85%; margin: 10px auto; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
+
+    <nav>
+        <a href="index.html" class="active">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+    </nav>
 
     <header>
         <h1>VM</h1>
